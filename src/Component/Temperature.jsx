@@ -1,61 +1,87 @@
-import React from 'react'
+import React from "react";
 
 function Temperature({ info }) {
 
-    if (!info) return null;
-
     return (
-        <div className="h-full flex flex-col justify-between bg-gradient-to-br from-blue-500/30 to-indigo-900/40 rounded-xl p-4 border border-blue-400/20 shadow-lg">
+        <div className="h-full text-gray-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
 
-            {/* Top Section */}
-            <div className="text-center py-3">
-                <img src="/temperature.png" className="h-20 mx-auto drop-shadow-lg" />
+            <div>
+                <div className="flex justify-between items-center text-white border-gray-600">
+                    <div>
+                        <p className="text-blue-400 text-2xl">{info.name}, {info.country}</p>
+                    </div>
 
-                <p className="text-sm text-gray-200 mt-2">
-                    Temperature
-                </p>
+                    <div className="text-right">
+                        <p className="text-sm text-gray-400">Today</p>
+                        <p className="font-bold text-lg">{new Date().toLocaleDateString()}</p>
+                    </div>
+                </div>
+                <div>
+                    <div className="flex items-center gap-3 m-3">
+                        <p className="text-4xl sm:text-5xl md:text-6xl font-bold text-orange-500">
+                            {info.temp}
+                        </p>
+                        <span className="text-3xl font-bold text-gray-400">&deg;C</span>
+                    </div>
+                </div>
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 flex-1">
 
-                <p className="text-5xl font-bold mt-1 text-white">
-                    {info.temperature}°C
-                </p>
+                    <div className="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center aspect-square">
+                        <p className="text-base text-gray-300">Max Temp</p>
+                        <p className="text-lg font-bold text-white">
+                            {(info.temp_max)} &deg; C
+                        </p>
+                    </div>
+                    <div className="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center aspect-square">
+                        <p className="text-base text-gray-300">Min Temp</p>
+                        <p className="text-lg font-bold text-white">
+                            {(info.temp_min)} &deg; C
+                        </p>
+                    </div>
+                    <div className="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center aspect-square">
+                        <p className="text-base text-gray-300">Feels Like</p>
+                        <p className="text-lg font-bold text-white">
+                            {(info.feels_like)} &deg; C
+                        </p>
+                    </div>
+                    <div className="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center aspect-square">
+                        <p className="text-base text-gray-300">Humidity</p>
+                        <p className="text-lg font-bold text-white">
+                            {(info.humidity)} %
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            {/* Divider */}
-            <div className="border-t border-white/20 my-4"></div>
 
-            {/* Grid Info */}
-            <div className="grid grid-cols-2 gap-4 text-center">
-
-                <div className="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                    <p className="text-xs text-gray-300">Humidity</p>
-                    <p className="text-lg font-semibold text-white">
-                        {info.humidity}%
-                    </p>
+            <div className="bg-slate-700 text-white rounded-xl p-4 mt-4 space-y-3 text-sm">
+                <div className="flex justify-between">
+                    <span>Wind Speed</span>
+                    <span className="font-semibold">{info.humidity} %</span>
                 </div>
-
-                <div className="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                    <p className="text-xs text-gray-300">Min Temp</p>
-                    <p className="text-lg font-semibold text-white">
-                        {info.tempMinimum}°C
-                    </p>
+                <div className="flex justify-between">
+                    <span>Pressure</span>
+                    <span className="font-semibold">{info.precipitation} mm</span>
                 </div>
-
-                <div className="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10 col-span-2">
-                    <p className="text-xs text-gray-300">Max Temp</p>
-                    <p className="text-lg font-semibold text-white">
-                        {info.tempMaximum}°C
-                    </p>
+                <div className="flex justify-between">
+                    <span>Ground Level</span>
+                    <span className="font-semibold">{info.wind_speed} km/h</span>
                 </div>
-
+                <div className="flex justify-between">
+                    <span>Sea Level</span>
+                    <span className="font-semibold">{info.wind_direction} &deg; C</span>
+                </div>
+                <div className="flex justify-between">
+                    <span>Timezone</span>
+                    <span className="font-semibold">{info.timezone}</span>
+                </div>
+                <div className="flex justify-between">
+                    <span>Visibility</span>
+                    <span className="font-semibold">{info.visibility}</span>
+                </div>
             </div>
-
-            {/* Footer */}
-            <div className="mt-4 rounded-xl p-2 text-xs text-center text-gray-200 bg-white/10 backdrop-blur-md border border-white/10">
-                Current temperature is {info.temperature}°C with humidity at {info.humidity}%
-            </div>
-
         </div>
-    )
+    );
 }
 
 export default Temperature;

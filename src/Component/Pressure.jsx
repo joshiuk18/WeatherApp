@@ -1,55 +1,49 @@
-import React from 'react'
-
 function Pressure({ info }) {
-
-    if (!info) return null;
 
     return (
         <div className="h-full flex flex-col justify-between">
 
-            {/* Title */}
-            <p className="font-bold border-b border-gray-600 pb-2 mb-3">
+            <p className="font-semibold sm:font-bold border-b border-gray-600 pb-2 mb-3 text-sm sm:text-base">
                 Pressure
             </p>
 
-            {/* Content */}
-            <div className="flex items-center justify-between gap-4">
-
-                <img
-                    src="/pressure.jpg"
-                    alt="Pressure gauge"
-                    className="h-24"
-                />
-
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="w-14 h-14 sm:w-28 sm:h-28 md:w-32 md:h-32">
+                    <img src='/Speedometer.gif' />
+                </div>
                 <div className="flex flex-col items-center justify-center space-y-2">
-                    <p className="text-3xl font-semibold">
+                    <p className="text-2xl sm:text-2xl md:text-3xl font-semibold">
                         {info.pressure} mb
                     </p>
-
-                    <p className="bg-purple-600/80 px-4 py-1 rounded-xl text-sm font-semibold">
+                    <p className="bg-purple-600 px-4 sm:px-4 py-1 rounded-xl text-xs sm:text-sm font-semibold">
                         High
                     </p>
                 </div>
-
             </div>
 
-            {/* Range */}
-            <input
-                type="range"
-                min="980"
-                max="1020"
-                value={info.pressure}
-                readOnly
-                className="w-full mt-4 accent-purple-500"
-            />
+            <div className="my-4 py-4">
+                <input
+                    type="range"
+                    min="900"
+                    max="1100"
+                    value={info.pressure}
+                    readOnly
+                    className="w-full accent-purple-500 h-2 sm:h-2"
+                />
+                <div className="flex justify-between text-xs sm:text-xs mt-1 px-1">
+                    <span>900</span>
+                    <span>950</span>
+                    <span>1000</span>
+                    <span>1050</span>
+                    <span>1100</span>
+                </div>
+            </div>
 
-            {/* Footer */}
-            <p className="text-xs text-center text-gray-300 border-t border-gray-600 mt-4 pt-2">
+            <div className="bg-slate-700 text-gray-300 text-lg sm:text-xs mt-1 sm:mt-3 p-1 sm:p-2 rounded-lg leading-relaxed">
                 Current pressure is {info.pressure} mb
-            </p>
-
+            </div>
         </div>
     )
 }
 
-export default Pressure
+export default Pressure;

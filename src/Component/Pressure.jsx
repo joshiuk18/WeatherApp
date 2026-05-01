@@ -1,3 +1,6 @@
+import Lottie from "lottie-react";
+import Speedometer from "../Animation/Speedometer.json";
+
 function Pressure({ info }) {
 
     return (
@@ -7,15 +10,15 @@ function Pressure({ info }) {
                 Pressure
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="w-14 h-14 sm:w-28 sm:h-28 md:w-32 md:h-32">
-                    <img src='/Speedometer.gif' />
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-10 p-4">
+                <div className="w-16 h-16 sm:w-28 sm:h-28 md:w-32 md:h-32 shrink-0">
+                    <Lottie.default animationData={Speedometer} />
                 </div>
-                <div className="flex flex-col items-center justify-center space-y-2">
-                    <p className="text-2xl sm:text-2xl md:text-3xl font-semibold">
+                <div className="flex flex-col items-center sm:items-end justify-center space-y-2">
+                    <p className="text-2xl sm:text-3xl md:text-4xl font-semibold">
                         {info.pressure} mb
                     </p>
-                    <p className="bg-purple-600 px-4 sm:px-4 py-1 rounded-xl text-xs sm:text-sm font-semibold">
+                    <p className="bg-purple-600 px-4 py-1 rounded-xl text-xs sm:text-sm font-semibold text-white">
                         High
                     </p>
                 </div>
